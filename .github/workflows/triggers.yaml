@@ -14,12 +14,12 @@ jobs:
   pr-triggered:
     name: A reusable workflow initiated by PRs in repo A
     if: |
-        github.repository == 'jack-morrison/repoA' &&
-        ${{ github.event_name == 'pull_request' }}
+        ${{ github.repository == 'jack-morrison/repoA' &&
+        github.event_name == 'pull_request' }}
     uses: jack-morrison/repoB/.github/workflows/ci.yml@main
   schedule-triggered:
     name: A reusable workflow initiated by a schedule in repo A
     if: |
-        github.repository == 'jack-morrison/repoA' &&
-        ${{ github.event_name == 'schedule' }}
+        ${{ github.repository == 'jack-morrison/repoA' &&
+        github.event_name == 'schedule' }}
     uses: jack-morrison/repoB/.github/workflows/nightly.yml@main
