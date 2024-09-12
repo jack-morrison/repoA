@@ -1,0 +1,26 @@
+name: 'Action!'
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - closed
+  schedule:
+    - cron:  '*/1.5 * * * *'
+
+jobs:
+  pr-triggered:
+    name: A reusable workflow initiated by PRs in repo A
+    if: |
+        github.repository == 'jack-morrison/repoA' &&
+        ${{ github.event_name == 'pull_request' }}
+    uses: jack-morrison/repoB/.github/workflows/ci.yml@master
+  schedule-triggered:
+    name: A reusable workflow initiated by a schedule in repo A
+    if: |
+        github.repository == 'jack-morrison/repoA' &&
+        ${{ github.event_name == 'schedule' }}
+    uses: jack-morrison/repoB/.github/workflows/nightly.yml@master
