@@ -9,7 +9,7 @@ on:
       - synchronize
       - closed
   schedule:
-    - cron:  '*/1.5 * * * *'
+    - cron:  '*/1 * * * *'
 
 jobs:
   pr-triggered:
