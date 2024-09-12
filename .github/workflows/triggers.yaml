@@ -7,7 +7,6 @@ on:
       - opened
       - reopened
       - synchronize
-      - closed
   schedule:
     - cron:  '*/1 * * * *'
 
